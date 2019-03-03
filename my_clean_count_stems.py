@@ -6,6 +6,7 @@
 """
 
 import regex as re
+from porter_stemmer_helpers import measure_word
 
 def porter_stemmer(word):
     pass
