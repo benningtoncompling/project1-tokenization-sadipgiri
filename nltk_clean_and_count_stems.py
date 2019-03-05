@@ -29,10 +29,10 @@ def count_cleaned_and_stemmized_tokens(input_filename, output_filename):
             file.write('{0}\t{1}\n'.format(i[0], i[1]))
 
 if __name__ == '__main__':
+    print('-----LEVEL2-----')
     print('-----sample.xml-----testing-----')
-    count_cleaned_and_stemmized_tokens('sample.xml', 'sadip_stemmized_sample_output.txt')
+    count_cleaned_and_stemmized_tokens('sample.xml', 'level2_sadip_stemmized_sample_output.txt')
     print('-----wikipedia------assignment-----')
     argument_lists = sys.argv # list all terminal system arguments
-    #count_cleaned_and_stemmized_tokens('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_nltk_stemmed_out.txt')
     count_cleaned_and_stemmized_tokens(argument_lists[1], argument_lists[2])
 

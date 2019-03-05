@@ -65,11 +65,10 @@ def helper_sort_dictionary(dct):
     return [(i, dct[i]) for i in sorted(dct, key=dct.get, reverse=True)]
 
 if __name__ == '__main__':
+    print('-----LEVEL1-----')
     print('-----sample.xml-----testing-----')
-    write_sorted_word_count_file('sample.xml', 'sadip_sample_output.txt')
+    write_sorted_word_count_file('sample.xml', 'level1_sadip_sample_output.txt')
     print('-----wikipedia------assignment-----')
     argument_list = sys.argv # list all terminal system arguments
-    #write_sorted_word_count_file('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_out.txt')
     write_sorted_word_count_file(argument_list[1], argument_list[2])
-    #print(helper_sort_dictionary(tokenization('Wikipedia-LexicalAnalysis.xml')))
     
