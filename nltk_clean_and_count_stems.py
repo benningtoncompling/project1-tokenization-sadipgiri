@@ -5,6 +5,7 @@
     Date: 03/02/2019
 """
 
+import sys
 import regex as re
 import nltk
 from clean_and_count_tokens import helper_clean_text, helper_counter, helper_sort_dictionary
@@ -31,5 +32,7 @@ if __name__ == '__main__':
     print('-----sample.xml-----testing-----')
     count_cleaned_and_stemmized_tokens('sample.xml', 'sadip_stemmized_sample_output.txt')
     print('-----wikipedia------assignment-----')
-    count_cleaned_and_stemmized_tokens('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_nltk_stemmed_out.txt')
-    
+    argument_lists = sys.argv # list all terminal system arguments
+    #count_cleaned_and_stemmized_tokens('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_nltk_stemmed_out.txt')
+    count_cleaned_and_stemmized_tokens(argument_lists[1], argument_lists[2])
+

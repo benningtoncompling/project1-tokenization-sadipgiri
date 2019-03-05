@@ -6,6 +6,7 @@
 """
 
 import regex as re
+import sys
 
 def tokenization(filename):
     '''
@@ -27,7 +28,7 @@ def helper_clean_text(text):
               also, could manipulate the reg exp according to someone's needs  
     '''
     new_text = text
-    subs_chars = [r'([<].*["][>])|([<][a-zA-Z]+[0-9]*[>])|([<][/][a-zA-Z]+[0-9]*[>])|([<].*[/][>])|(http.+[\s>])|([.][\s{"&),])|([.][0-9]+)|(\n)|([0-9]+[.][0-9]+)|([a-zA-Z]*[0-9]+[a-zA-Z]*)|([.]{3})|([&][gl][t][;])|([-_^–!;=:~,#}&(){*/+|])|([[])|([]])', r"([']{2,})", r"(\s[']+[a-zA-Z][']+\s)", r"(\s['])|([']\s)", r'(")', r'([.]\s)']
+    subs_chars = [r'([<].*["][>])|([<][a-zA-Z]+[0-9]*[>])|([<][/][a-zA-Z]+[0-9]*[>])|([<].*[/][>])|(http.+[\s>])|([.][\s{"&),])|([.][0-9]+)|(\n)|([0-9]+[.][0-9]+)|([a-zA-Z]*[0-9]+[a-zA-Z]*)|([.]{3})|([&][gl][t][;])|([-_^–!;=:~,#}&(){*/+|])|([[])|([]])', r"([']{2,})", r"(\s[']+[a-zA-Z][']+\s)", r"(\s['])|([']\s)", r'(")', r'([.]\s)', r'(\\s)']
     for i in subs_chars:
         new_text = re.sub(i, ' ', new_text)
     return new_text
@@ -67,6 +68,8 @@ if __name__ == '__main__':
     print('-----sample.xml-----testing-----')
     write_sorted_word_count_file('sample.xml', 'sadip_sample_output.txt')
     print('-----wikipedia------assignment-----')
-    write_sorted_word_count_file('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_out.txt')
+    argument_list = sys.argv # list all terminal system arguments
+    #write_sorted_word_count_file('Wikipedia-LexicalAnalysis.xml', 'lexical_analysis_out.txt')
+    write_sorted_word_count_file(argument_list[1], argument_list[2])
     #print(helper_sort_dictionary(tokenization('Wikipedia-LexicalAnalysis.xml')))
     
