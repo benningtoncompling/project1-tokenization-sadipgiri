@@ -116,11 +116,16 @@ def step1b(word):
         The rule to map to a single letter causes the removal of one of the double
         letter pair. The -E is put back on -AT, -BL and -IZ, so that the suffixes
         -ATE, -BLE and -IZE can be recognised later. This E may be removed in step
+
+    NOTE: 
+        return word -> if m == 0 and endswith('eed') e.g. feed -> fee if we don't define this way!!
     '''
     cond1_or_2_success = False
     word = word.lower()
     if word.endswith('eed') and measure_word(word[:-len('eed')])>0:
         return helper_replace_suffix(word, 'eed', 'ee')
+    if word.endswith('eed') and measure_word(word[:-len('eed')]) == 0:
+        return word 
     if word.endswith('ed') and 'v' in measure_word(word[:-len('ed')], word_format=True)[1]:
         word = helper_replace_suffix(word, 'ed', '')
         cond1_or_2_success = True
@@ -139,7 +144,6 @@ def step1b(word):
         lst_measure_and_cv_form = measure_word(word, word_format=True)
         if lst_measure_and_cv_form[0] == 1 and lst_measure_and_cv_form[1].endswith('cvc') and not (word.endswith('w') or word.endswith('x') or word.endswith('y')):
             return word + 'e'
-        return word
     return word
 
 def step1c(word):
